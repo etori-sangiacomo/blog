@@ -1,4 +1,7 @@
 # Blog
+[![Build Status](https://travis-ci.com/etori-sangiacomo/blog.svg?branch=master)](https://travis-ci.com/etori-sangiacomo/blog)
+
+[![codecov](https://codecov.io/gh/etori-sangiacomo/blog/branch/master/graph/badge.svg?token=JAGUVRMGGM)](https://codecov.io/gh/etori-sangiacomo/blog)
 
 To start your Phoenix server:
 
