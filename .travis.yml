@@ -3,7 +3,7 @@ language: elixir
 elixir:
   - 1.10
 otp_release:
-  - 22.2.6
+  - 23.0.2
 
 addons: 
   postgres: '9.4'
