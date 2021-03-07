@@ -3,6 +3,7 @@
 # although such is generally not recommended and you have to
 # remember to add this file to your .gitignore.
 import Config
+
 database_url =
   System.get_env("DATABASE_URL") ||
     raise """
@@ -34,7 +35,7 @@ config :blog, BlogWeb.Endpoint,
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start each relevant endpoint:
 #
-    config :blog, BlogWeb.Endpoint, server: true
+config :blog, BlogWeb.Endpoint, server: true
 #
 # Then you can assemble a release by calling `mix release`.
 # See `mix help release` for more information.
