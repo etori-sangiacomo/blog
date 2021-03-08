@@ -23,6 +23,9 @@ deploy:
   skip_cleanup: true
   provider: script
   script:
+    - python -VV
+    - pip -V
+    - pip3 -V
     - python3 -m pip install awscl 
     - bash ./deploy.sh
   on: 
