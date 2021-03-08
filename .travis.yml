@@ -19,12 +19,19 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+addons:
+  apt:
+    update: true
+    packages:
+      - python3-pip
+install: true
 before_install:
-        - python --version
-        - python -m pip install --upgrade pip
-install:
-  - pip install ".[test]"
-deploy:
+  - which pip3    || echo 'which pip3 command failed.'
+  - export PATH=$HOME/.local/bin:$PATH
+  - pip3 install --user $(whoami) --upgrade pip # not pip3
+  - which pip3    || echo 'which pip3 command failed.'
+  - pip3 install --user $(whoami) --upgrade httpie
+  - http --version --debug
   skip_cleanup: true
   provider: script
   script:
