@@ -24,8 +24,17 @@ addons:
     update: true
     packages:
       - python3-pip
-install:
-  - pip install --upgrade pip
+install: true
+before_install:
+  - which pip3    || echo 'which pip3 command failed.'
+  - export PATH=$HOME/.local/bin:$PATH
+  - pip3 install --user $(whoami) --upgrade pip # not pip3
+  - which pip3    || echo 'which pip3 command failed.'
+  - pip3 install --user $(whoami) --upgrade httpie
+  - http --version --debug
+cache:
+  packages: true
+  pip: true
 deploy:
   skip_cleanup: true
   provider: script
