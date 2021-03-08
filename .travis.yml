@@ -24,6 +24,8 @@ addons:
     update: true
     packages:
       - python3-pip
+install:
+  - pip install --upgrade pip
 deploy:
   skip_cleanup: true
   provider: script
