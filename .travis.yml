@@ -19,6 +19,7 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+python: 3
 addons:
   apt:
     update: true
@@ -30,8 +31,6 @@ before_install:
   - export PATH=$HOME/.local/bin:$PATH
   - pip3 install --user $(whoami) --upgrade pip # not pip3
   - which pip3    || echo 'which pip3 command failed.'
-  - pip3 install --user $(whoami) --upgrade httpie
-  - http --version --debug
 cache:
   packages: true
   pip: true
@@ -41,3 +40,4 @@ deploy:
   script: bash ./deploy.sh
   on: 
     branch: master
+  
