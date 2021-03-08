@@ -22,11 +22,8 @@ after_success:
 deploy:
   skip_cleanup: true
   provider: script
-  addons:
-  apt:
-    packages:
-      - "python3"
-      - "python3-pip"
-  script: bash ./deploy.sh
+  script:
+    - python3 -m pip install awscl 
+    - bash ./deploy.sh
   on: 
     branch: master
