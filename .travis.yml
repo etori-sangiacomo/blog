@@ -23,15 +23,12 @@ deploy:
   skip_cleanup: true
   provider: script
   addons:
-    apt:
-      packages:
-        - "python3"
-        - "python3-pip"
-  script:
-    - python -VV
-    - pip -V
-    - pip3 -V
-    - python3 -m pip install awscli 
-    - bash ./deploy.sh
+  apt:
+    packages:
+      - "python3"
+      - "python3-pip"
+  script: 
+    - "python3 -m pip install awscli" 
+    - "bash ./deploy.sh"
   on: 
     branch: master
