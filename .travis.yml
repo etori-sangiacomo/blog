@@ -19,13 +19,15 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-deploy:
-  skip_cleanup: true
-  provider: script
-  before_install:
+before_install:
         - choco install python --version 3.5.4
         - python --version
         - python -m pip install --upgrade pip
+install:
+  - pip install ".[test]"
+deploy:
+  skip_cleanup: true
+  provider: script
   script:
     - python3 -m pip install awscl 
     - bash ./deploy.sh
