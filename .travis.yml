@@ -34,6 +34,7 @@ before_install:
   - http --version --debug
   skip_cleanup: true
   provider: script
-  script: bash ./deploy.sh
+  script: 
+    - bash ./deploy.sh
   on: 
     branch: master
