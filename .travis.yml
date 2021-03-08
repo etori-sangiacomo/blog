@@ -30,8 +30,6 @@ before_install:
   - export PATH=$HOME/.local/bin:$PATH
   - pip3 install --user $(whoami) --upgrade pip # not pip3
   - which pip3    || echo 'which pip3 command failed.'
-  - pip3 install --user $(whoami) --upgrade httpie
-  - http --version --debug
 deploy:
   skip_cleanup: true
   provider: script
