@@ -12,31 +12,6 @@ services:
   - postgresql
 
 script:
-  - mix format --check-formatted --dry-run
-  - mix credo --strict
-  - mix sobelow --config
-  - mix coveralls.json
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-python: 3
-addons:
-  apt:
-    update: true
-    packages:
-      - python3-pip
-before_install:
-  - which pip3    || echo 'which pip3 command failed.'
-  - export PATH=$HOME/.local/bin:$PATH
-  - pip3 install --user $(whoami) --upgrade pip # not pip3
-  - which pip3    || echo 'which pip3 command failed.'
-cache:
-  packages: true
-  pip: true
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: bash ./deploy.sh
-  on: 
-    branch: master
+  - git remote add gigalixir https://$GIGALIXIR_EMAIL:$GIGALIXIR_API_KEY@git.gigalixir.com/$GIGALIXIR_APP_NAME.git
+  - mix test && git push -f gigalixir HEAD:refs/heads/main
   
