@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Blog · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
@@ -15,7 +16,9 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#">Welcome!! Student</a></li>
           <li><a href="#">Post</a></li>
-          <li><a href="#">Posts</a></li>
+          <li>
+          <%= link "Posts", to: Routes.post_path(@conn, :index) %>
+          </li>
         </ul>
       </div>
     </nav>
