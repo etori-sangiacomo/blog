@@ -11,4 +11,9 @@ defmodule BlogWeb.PostController do
     post = Blog.Repo.get!(Post, id)
     render(conn, "show.html", post: post)
   end
+
+  def new(conn, params) do
+    changeset = Post.changeset(%{})
+    render(conn, "new.html", changeset: changeset)
+  end
 end
