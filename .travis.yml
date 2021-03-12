@@ -11,17 +11,10 @@ addons:
 services:
   - postgresql
 
-script:
-  - mix format --check-formatted --dry-run
-  - mix credo --strict
-  - mix sobelow --config
-  - mix coveralls.json
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
 deploy:
   skip_cleanup: true
   provider: script
   script: bash ./deploy.sh
   on: 
-    branch: master
+    branch: main
+  
