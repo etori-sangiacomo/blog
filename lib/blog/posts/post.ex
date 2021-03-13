@@ -16,4 +16,10 @@ defmodule Blog.Posts.Post do
     |> cast(attrs, @required ++ @optional)
     |> validate_required(@required)
   end
+
+  def changeset_update(post, attrs \\ %{}) do
+    post
+    |> cast(attrs, @required ++ @optional)
+    |> validate_required(@required)
+  end
 end
