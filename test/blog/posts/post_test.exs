@@ -35,10 +35,10 @@ defmodule Blog.PostsTest do
   end
 
   test "update_post/2 with valid data" do
-   post = post_fixture()
+    post = post_fixture()
 
-   assert {:ok, %Post{} = post} = Posts.update_post(post, @update_post)
-   assert post.title == "updated"
+    assert {:ok, %Post{} = post} = Posts.update_post(post, @update_post)
+    assert post.title == "updated"
   end
 
   test "delete/1" do
@@ -46,5 +46,5 @@ defmodule Blog.PostsTest do
 
     assert post = Posts.delete(post.id)
     assert_raise Ecto.NoResultsError, fn -> Posts.get_post!(post.id) end
-   end
+  end
 end

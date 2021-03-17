@@ -65,7 +65,9 @@ defmodule BlogWeb.PostControllerTest do
     end
 
     test "update_post/2 with invalid data", %{conn: conn, post: post} do
-      conn = put(conn, Routes.post_path(conn, :update, post), post: %{title: nil, description: nil})
+      conn =
+        put(conn, Routes.post_path(conn, :update, post), post: %{title: nil, description: nil})
+
       assert html_response(conn, 200) =~ "Edit Post"
     end
 
