@@ -9,3 +9,11 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias Blog.{Repo, Posts.Post}
+
+phoenix = Post.changeset(%{title: "Phoenix", description: "Phoenix description"})
+pg = Post.changeset(%{title: "Pg", description: "Pg description"})
+
+Repo.insert!(phoenix)
+Repo.insert!(pg)
