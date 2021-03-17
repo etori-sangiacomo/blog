@@ -16,7 +16,7 @@ defmodule BlogWeb.PostControllerTest do
     post
   end
 
-  describe "post crud" do
+  describe "Posts" do
     setup [:create_post]
 
     test "list all posts", %{conn: conn, post: post} do
