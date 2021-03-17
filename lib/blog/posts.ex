@@ -10,8 +10,8 @@ defmodule Blog.Posts do
     |> Repo.insert()
   end
 
-  def update_post(id, post_params) do
-    get_post!(id)
+  def update_post(post, post_params) do
+    post
     |> Post.changeset_update(post_params)
     |> Repo.update()
   end

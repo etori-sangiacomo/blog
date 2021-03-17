@@ -1,1 +1,4 @@
+<li>
+  <h1>Create Post</h1>
+</li>
 <%= render "form.html", Map.put(assigns, :action, Routes.post_path(@conn, :create)) %>
