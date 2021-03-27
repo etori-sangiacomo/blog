@@ -17,34 +17,36 @@ defmodule Blog.PostsTest do
     post
   end
 
-  test "list_posts/0 return all posts" do
-    post = post_fixture()
+  describe "Post crud" do
+    test "list_posts/0 return all posts" do
+      post = post_fixture()
 
-    assert Posts.list_posts() == [post]
-  end
+      assert Posts.list_posts() == [post]
+    end
 
-  test "get_post/1 return a posts" do
-    post = post_fixture()
-    assert Posts.get_post!(post.id) == post
-  end
+    test "get_post/1 return a posts" do
+      post = post_fixture()
+      assert Posts.get_post!(post.id) == post
+    end
 
-  test "create_post/1 with valid data" do
-    assert {:ok, %Post{} = post} = Posts.create_post(@valid_post)
-    assert post.title == "Phoenix"
-    assert post.description == "Phoenix description"
-  end
+    test "create_post/1 with valid data" do
+      assert {:ok, %Post{} = post} = Posts.create_post(@valid_post)
+      assert post.title == "Phoenix"
+      assert post.description == "Phoenix description"
+    end
 
-  test "update_post/2 with valid data" do
-    post = post_fixture()
+    test "update_post/2 with valid data" do
+      post = post_fixture()
 
-    assert {:ok, %Post{} = post} = Posts.update_post(post, @update_post)
-    assert post.title == "updated"
-  end
+      assert {:ok, %Post{} = post} = Posts.update_post(post, @update_post)
+      assert post.title == "updated"
+    end
 
-  test "delete/1" do
-    post = post_fixture()
+    test "delete/1" do
+      post = post_fixture()
 
-    assert post = Posts.delete(post.id)
-    assert_raise Ecto.NoResultsError, fn -> Posts.get_post!(post.id) end
+      assert post = Posts.delete(post.id)
+      assert_raise Ecto.NoResultsError, fn -> Posts.get_post!(post.id) end
+    end
   end
 end
