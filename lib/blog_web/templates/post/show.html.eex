@@ -16,20 +16,21 @@
       <div class="row">
         <div class="input-field col s10">
           <i class="material-icons prefix">mode_edit</i>
-          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-          <label for="icon_prefix2">Comment</label>
+          <textarea id="comment" class="materialize-textarea"></textarea>
+          <label for="comment">Describe your idea!!</label>
         </div>
         <div class="input-field col s2">
-          <a class="waves-effect waves-light btn">button</a>
+          <a class="waves-effect waves-light btn" id="btn-comment">Comment</a>
         </div>
       </div>
     </form>
-  </div
+  </div>
 
   <ul class="collection">
-    <li class="collection-item avatar">
-      <i class="material-icons circle red">play_arrow</i>
-      <span class="title">Title</span>
-      <p>Lorem aeiuhuehfiuewhfuwhiuefhuewhfuewiufhwoiuhfiushiudhfsiuhfiuhsiufhdiushfiuhfiuhwufiewhfewhifhewifoweoifjoiewjfoiwejoiewuiweyruiewhfuewhfiwhei?</p>
-    </li>
   </ul>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  window.createSocket(<%= @post.id %>)
+})
+</script>
