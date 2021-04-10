@@ -16,6 +16,13 @@ defmodule BlogWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/auth", BlogWeb do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
