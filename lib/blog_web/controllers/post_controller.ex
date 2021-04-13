@@ -72,6 +72,5 @@ defmodule BlogWeb.PostController do
         |> redirect(to: Routes.post_path(conn, :index))
         |> halt()
     end
-
   end
 end
