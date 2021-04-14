@@ -10,10 +10,18 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias Blog.{Repo, Posts.Post}
+alias Blog.{Accounts, Accounts.User, Posts, Posts.Post}
 
-phoenix = Post.changeset(%{title: "Phoenix", description: "Phoenix description"})
-pg = Post.changeset(%{title: "Pg", description: "Pg description"})
+user_params = %{
+  email: "etori.sangiacomo@caminoeducation.com",
+  first_name: nil,
+  image: "https://lh3.googleusercontent.com/a/default-user=s96-c",
+  last_name: nil,
+  provider: "google",
+  token: "ya29.a0AfH6SMCms_ePICDZJf5JZhB5YQX54LzJPeFkTOa2NhDWOQZ_NLMShOB3OQmCqEdZj9hqk7NHTh7B55mXxc9UvhYbqBoE6Wk0HeCRR5pBdu02inOYrigVQHnvD4prQ2L4JTkytURYHZ4fMyTT-o5Rv_4CpBgq"
+}
 
-Repo.insert!(phoenix)
-Repo.insert!(pg)
+post_params = %{title: "Pg", description: "Pg description"}
+
+{:ok, user} = Blog.Accounts.create_user(user_params)
+{:ok, post} = Posts.create_post(user, post_params)
