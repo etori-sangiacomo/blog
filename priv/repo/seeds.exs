@@ -21,7 +21,17 @@ user_params = %{
   token: "ya29.a0AfH6SMCms_ePICDZJf5JZhB5YQX54LzJPeFkTOa2NhDWOQZ_NLMShOB3OQmCqEdZj9hqk7NHTh7B55mXxc9UvhYbqBoE6Wk0HeCRR5pBdu02inOYrigVQHnvD4prQ2L4JTkytURYHZ4fMyTT-o5Rv_4CpBgq"
 }
 
+user_params_2 = %{
+  email: "etori.sangiacomo123123@caminoeducation.com",
+  first_name: nil,
+  image: "https://lh3.googleuser123content.com/a/default-user=s96-c",
+  last_name: nil,
+  provider: "google",
+  token: "ya29.a0AfH6SMCms_e123PICDZJf5JZhB5YQX54LzJPeFkTOa2NhDWOQZ_NLMShOB3OQmCqEdZj9hqk7NHTh7B55mXxc9UvhYbqBoE6Wk0HeCRR5pBdu02inOYrigVQHnvD4prQ2L4JTkytURYHZ4fMyTT-o5Rv_4CpBgq"
+}
+
 post_params = %{title: "Pg", description: "Pg description"}
 
 {:ok, user} = Blog.Accounts.create_user(user_params)
-{:ok, post} = Posts.create_post(user, post_params)
+{:ok, _user2} = Blog.Accounts.create_user(user_params_2)
+{:ok, _post} = Posts.create_post(user, post_params)

@@ -38,6 +38,17 @@ defmodule BlogWeb.PostControllerTest do
       assert html_response(conn, 200) =~ "Create Post"
     end
 
+    test "form post withdraw user authenticated", %{conn: conn, post: post} do
+      conn =
+        conn
+        |> get(Routes.post_path(conn, :new))
+
+      assert redirected_to(conn) == Routes.page_path(conn, :index)
+
+      conn = get(conn, Routes.page_path(conn, :index))
+      assert html_response(conn, 200) =~ "Require authentication!!"
+    end
+
     test "create_post/1 with valid data", %{conn: conn, post: post} do
       conn =
         conn
@@ -65,6 +76,21 @@ defmodule BlogWeb.PostControllerTest do
         |> Plug.Test.init_test_session(user_id: 1)
         |> get(Routes.post_path(conn, :edit, post))
       assert html_response(conn, 200) =~ "Edit Post"
+    end
+
+    test "edit_post/1 with invalid user", %{conn: conn, post: post} do
+      user = Blog.Accounts.get_user!(1)
+      {:ok, post} = Blog.Posts.create_post(user, @valid_post)
+
+      conn =
+        conn
+        |> Plug.Test.init_test_session(user_id: 2)
+        |> get(Routes.post_path(conn, :edit, post))
+
+      assert redirected_to(conn) == Routes.page_path(conn, :index)
+
+      conn = get(conn, Routes.page_path(conn, :index))
+      assert html_response(conn, 200) =~ "Permission denied!"
     end
 
     test "update_post/2 with valid data", %{conn: conn, post: post} do
