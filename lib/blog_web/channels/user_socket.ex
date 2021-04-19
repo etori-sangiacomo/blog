@@ -20,6 +20,9 @@ defmodule BlogWeb.UserSocket do
     case Phoenix.Token.verify(socket, "blog_user", token) do
       {:ok, user_id} ->
         {:ok, assign(socket, :user_id, user_id)}
+
+      {:error, _} ->
+        :error
     end
     {:ok, socket}
   end
