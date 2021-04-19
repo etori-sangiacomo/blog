@@ -2,6 +2,8 @@ defmodule BlogWeb.PostController do
   use BlogWeb, :controller
 
   alias Blog.{Posts, Posts.Post}
+  plug BlogWeb.Plug.RequireAuth when action in [:create, :new, :edit, :update, :delete]
+  plug :check_owner when action in [:edit, :update, :delete]
 
   def index(conn, _params) do
     posts = Posts.list_posts()
@@ -26,7 +28,7 @@ defmodule BlogWeb.PostController do
   end
 
   def create(conn, %{"post" => post}) do
-    case Posts.create_post(post) do
+    case Posts.create_post(conn.assigns[:user], post) do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post created sucessfully!")
@@ -57,5 +59,18 @@ defmodule BlogWeb.PostController do
     conn
     |> put_flash(:info, "Post deleted successfully!")
     |> redirect(to: Routes.post_path(conn, :index))
+  end
+
+  def check_owner(%{params: %{"id" => post_id}} = conn, _) do
+    case Posts.get_post!(post_id).user_id == conn.assigns.user.id do
+      true ->
+        conn
+
+      false ->
+        conn
+        |> put_flash(:error, "Permission denied!")
+        |> redirect(to: Routes.post_path(conn, :index))
+        |> halt()
+    end
   end
 end
