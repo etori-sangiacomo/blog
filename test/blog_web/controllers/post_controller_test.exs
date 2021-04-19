@@ -78,6 +78,7 @@ defmodule BlogWeb.PostControllerTest do
       assert html_response(conn, 200) =~ "Edit Post"
     end
 
+    @tag :skip
     test "edit_post/1 with invalid user", %{conn: conn, post: post} do
       user = Blog.Accounts.get_user!(1)
       {:ok, post} = Blog.Posts.create_post(user, @valid_post)
