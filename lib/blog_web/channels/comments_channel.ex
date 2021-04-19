@@ -10,7 +10,7 @@ defmodule BlogWeb.CommentsChannel do
   def handle_in("comment:add", content, socket) do
     response =
       socket.assigns.post_id
-      |> Blog.Comments.create_comment(content)
+      |> Blog.Comments.create_comment(socket.assigns.user_id, content)
 
     case response do
       {:ok, comment} ->
