@@ -18,7 +18,8 @@ user_params = %{
   image: "https://lh3.googleusercontent.com/a/default-user=s96-c",
   last_name: nil,
   provider: "google",
-  token: "ya29.a0AfH6SMCms_ePICDZJf5JZhB5YQX54LzJPeFkTOa2NhDWOQZ_NLMShOB3OQmCqEdZj9hqk7NHTh7B55mXxc9UvhYbqBoE6Wk0HeCRR5pBdu02inOYrigVQHnvD4prQ2L4JTkytURYHZ4fMyTT-o5Rv_4CpBgq"
+  token:
+    "ya29.a0AfH6SMCms_ePICDZJf5JZhB5YQX54LzJPeFkTOa2NhDWOQZ_NLMShOB3OQmCqEdZj9hqk7NHTh7B55mXxc9UvhYbqBoE6Wk0HeCRR5pBdu02inOYrigVQHnvD4prQ2L4JTkytURYHZ4fMyTT-o5Rv_4CpBgq"
 }
 
 user_params_2 = %{
@@ -27,7 +28,8 @@ user_params_2 = %{
   image: "https://lh3.googleuser123content.com/a/default-user=s96-c",
   last_name: nil,
   provider: "google",
-  token: "ya29.a0AfH6SMCms_e123PICDZJf5JZhB5YQX54LzJPeFkTOa2NhDWOQZ_NLMShOB3OQmCqEdZj9hqk7NHTh7B55mXxc9UvhYbqBoE6Wk0HeCRR5pBdu02inOYrigVQHnvD4prQ2L4JTkytURYHZ4fMyTT-o5Rv_4CpBgq"
+  token:
+    "ya29.a0AfH6SMCms_e123PICDZJf5JZhB5YQX54LzJPeFkTOa2NhDWOQZ_NLMShOB3OQmCqEdZj9hqk7NHTh7B55mXxc9UvhYbqBoE6Wk0HeCRR5pBdu02inOYrigVQHnvD4prQ2L4JTkytURYHZ4fMyTT-o5Rv_4CpBgq"
 }
 
 post_params = %{title: "Pg", description: "Pg description"}
