@@ -27,8 +27,6 @@ defmodule BlogWeb.AuthControllerTest do
     provider: nil
   }
 
-
-
   test "callback success", %{conn: conn} do
     conn =
       conn
@@ -38,6 +36,14 @@ defmodule BlogWeb.AuthControllerTest do
     assert redirected_to(conn) == Routes.page_path(conn, :index)
     conn = get(conn, Routes.page_path(conn, :index))
     assert html_response(conn, 200) =~ "Welcome!!! #{@ueberauth.info.email}"
+  end
+
+  test "request test", %{conn: conn} do
+    conn =
+      conn
+      |> get(Routes.auth_path(conn, :request, "google"))
+
+    assert redirected_to(conn) =~ "accounts.google.com"
   end
 
   test "callback error", %{conn: conn} do
@@ -55,7 +61,7 @@ defmodule BlogWeb.AuthControllerTest do
     conn =
       conn
       |> Plug.Test.init_test_session(user_id: 2)
-        |> get(Routes.auth_path(conn, :logout))
+      |> get(Routes.auth_path(conn, :logout))
 
     assert redirected_to(conn) == Routes.page_path(conn, :index)
   end
