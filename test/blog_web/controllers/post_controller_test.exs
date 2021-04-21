@@ -40,6 +40,7 @@ defmodule BlogWeb.PostControllerTest do
         conn
         |> Plug.Test.init_test_session(user_id: 1)
         |> get(Routes.post_path(conn, :new))
+
       assert html_response(conn, 200) =~ "Create Post"
     end
 
@@ -72,6 +73,7 @@ defmodule BlogWeb.PostControllerTest do
         conn
         |> Plug.Test.init_test_session(user_id: 1)
         |> post(Routes.post_path(conn, :create), post: %{})
+
       assert html_response(conn, 200) =~ "be blank"
     end
 
@@ -80,6 +82,7 @@ defmodule BlogWeb.PostControllerTest do
         conn
         |> Plug.Test.init_test_session(user_id: 1)
         |> get(Routes.post_path(conn, :edit, post))
+
       assert html_response(conn, 200) =~ "Edit Post"
     end
 
