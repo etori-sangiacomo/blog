@@ -74,11 +74,13 @@ const createSocket = (post_id) => {
 
   channel.on(`comments:${post_id}::new`, addComment)
 
-  document.getElementById("btn-comment").addEventListener("click", () => {
-    const content = document.getElementById("comment").value
-    channel.push("comment:add", { content: content })
-    document.getElementById("comment").value = ""
-  });
+  if(window.userToken) {
+    document.getElementById("btn-comment").addEventListener("click", () => {
+      const content = document.getElementById("comment").value
+      channel.push("comment:add", { content: content })
+      document.getElementById("comment").value = ""
+    });
+  }
 }
 
 function listComments(comments) {
