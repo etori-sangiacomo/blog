@@ -56,7 +56,8 @@ defmodule Blog.Accounts do
         |> User.changeset(user)
         |> Repo.insert()
 
-      user -> {:ok, user}
+      user ->
+        {:ok, user}
     end
   end
 

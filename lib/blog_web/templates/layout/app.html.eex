@@ -7,21 +7,17 @@
     <title>Blog · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <%= if @conn.assigns.user do %>
+      <script>
+        window.userToken = "<%= Phoenix.Token.sign(BlogWeb.Endpoint, "blog_user", @conn.assigns.user.id) %>"
+      </script>
+    <% end %>
+
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">My Blog</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#">Welcome!! Student</a></li>
-          <li><a href="#">Post</a></li>
-          <li>
-          <%= link "Posts", to: Routes.post_path(@conn, :index) %>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <%= render BlogWeb.SharedView, "_menu.html", assigns %>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
