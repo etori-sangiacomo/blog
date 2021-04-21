@@ -21,7 +21,12 @@ defmodule BlogWeb.PostControllerTest do
     setup [:create_post]
 
     test "list all posts", %{conn: conn, post: post} do
-      conn = get(conn, Routes.post_path(conn, :index))
+
+      conn =
+        conn
+        |> Plug.Test.init_test_session(user_id: 1)
+        |> get(Routes.post_path(conn, :index))
+
       assert html_response(conn, 200) =~ "Phoenix"
     end
 

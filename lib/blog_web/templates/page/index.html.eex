@@ -1,6 +1,12 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>Peace of mind from prototype to production</p>
-
-  Pipeline Working 7
-</section>
+<ul class="collection with-header">
+  <li class="collection-header"><h4>All Posts</h4></li>
+  <%= for post <- @posts do %>
+    <li class="collection-item">
+      <div><%= post.title %>
+        <%= link to: Routes.post_path(@conn, :show, post), class: "secondary-content" do %>
+        <i class="material-icons blue-text">send</i>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
